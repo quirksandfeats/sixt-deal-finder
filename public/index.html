@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sixt Deal Finder</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="brand-six">SIXT</span> Deal Finder</div>
+    <div id="provider-badge" class="badge hidden"></div>
+  </header>
+
+  <main>
+    <aside class="panel">
+      <h2>Search</h2>
+
+      <label>Pickup area</label>
+      <div class="geo-row">
+        <input id="geo-input" type="text" placeholder="City, address, or airport…" autocomplete="off" />
+        <button id="geo-btn" type="button">Find</button>
+      </div>
+      <div id="geo-results" class="geo-results hidden"></div>
+      <div id="geo-chosen" class="geo-chosen"></div>
+
+      <label>Search radius: <strong id="radius-label">50 km</strong></label>
+      <input id="radius" type="range" min="5" max="300" step="5" value="50" />
+
+      <div class="row">
+        <div>
+          <label>Pickup date</label>
+          <input id="pickup-date" type="date" />
+        </div>
+        <div>
+          <label>Drop-off date</label>
+          <input id="dropoff-date" type="date" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Date flexibility</label>
+          <select id="flex-days">
+            <option value="0">Exact dates</option>
+            <option value="1">± 1 day</option>
+            <option value="2" selected>± 2 days</option>
+            <option value="3">± 3 days</option>
+            <option value="4">± 4 days</option>
+            <option value="5">± 5 days</option>
+          </select>
+        </div>
+        <div>
+          <label>Minimum days</label>
+          <input id="min-days" type="number" min="1" max="60" value="1" />
+        </div>
+      </div>
+
+      <label>Currency</label>
+      <select id="currency"></select>
+
+      <label>Vehicle categories</label>
+      <div id="category-chips" class="chips"></div>
+
+      <label class="check-row">
+        <input id="guaranteed-only" type="checkbox" />
+        Guaranteed models only
+      </label>
+
+      <h2>Protection</h2>
+      <div id="protection-list" class="protections"></div>
+
+      <label>Extras</label>
+      <div id="extras-list" class="extras"></div>
+
+      <button id="search-btn" class="primary">Search best prices</button>
+      <div id="search-note" class="note"></div>
+    </aside>
+
+    <section class="content">
+      <div id="map"></div>
+      <div id="results">
+        <div class="empty">Pick a location and dates, then hit <strong>Search best prices</strong>.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
